@@ -1,21 +1,25 @@
 @extends('layout.app')
+@section('page-title', 'DC COMICS -Comics')
 @section('main-content')
 <div class="black">
     <div class="cards">
         @foreach ($movies as $elem)
             <div class="fumetto">
                 <img src="{{$elem['image']}}" alt="fumetto">
-                <h5><a href="#">{{$elem['title']}}</a></h5>
+                <h5><a href="{{ route('movies.show', $elem->id) }}">{{$elem['title']}}</a></h5>
             </div>
         @endforeach
     </div>
   </div>
 
   <style>
-    .black {
+.black {
     background-color: #1C1C1C;
 }
 
+a{
+    cursor: pointer;
+}
 .cards {
     display: flex;
     flex-wrap: wrap;

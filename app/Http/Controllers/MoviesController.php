@@ -50,7 +50,11 @@ class MoviesController extends Controller
      */
     public function show($id)
     {
-        //
+        $prodotto_singolo = Movie::findOrFail($id);
+
+        // dd($movies);
+
+        return view('pages.movie.show', compact('prodotto_singolo'));
     }
 
     /**
