@@ -16,7 +16,7 @@
                     <a class="nav-link">CHARACTERS</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">COMICS</a>
+                    <a class="nav-link" href="{{ route('movies.index') }}">COMICS</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link">MOVIES</a>
