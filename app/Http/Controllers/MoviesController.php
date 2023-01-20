@@ -44,6 +44,17 @@ class MoviesController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+
+        $request->validate([
+            'title' => 'required|max:50'
+        ],
+        [
+            'title.required' => 'Il campo titolo è obbligatorio',
+            'title.max' => 'Attenzione! Il campo titolo è di massimo 50 caratteri'
+        ]
+    
+    );
+
         $new_movie = new Movie();
         $new_movie->fill($data);
         $new_movie->save();

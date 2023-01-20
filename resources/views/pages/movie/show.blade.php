@@ -10,7 +10,7 @@
       {{-- card con titolo e descrizione --}}
       <div class="card-comic">
         @if (session('success'))  
-        <div class=" w-50 m-auto alert alert-success">
+        <div class="mt-4 w-50 m-auto alert alert-success">
             {{session('success')}}
         </div>
         @endif
