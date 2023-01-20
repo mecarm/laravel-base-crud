@@ -22,6 +22,11 @@
                             <i class="fa-solid fa-trash"></i>
                         </button>
                     </form>
+                    <button class="btn btn-light">
+                        <a href="{{route('movies.edit', $elem->id)}}">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </a>
+                    </button>
                 </div>
                 <h5><a href="{{ route('movies.show', $elem->id) }}">{{$elem['title']}}</a></h5>
             </div>
@@ -63,7 +68,7 @@ a{
 
 .fumetto:hover #hover-me{
     position: relative;
-    bottom: 100px;
+    top: -200px;
     left: 40%;
     display: inline-block;
     color: white;

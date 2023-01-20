@@ -2,12 +2,18 @@
 
 @section('page-title', 'DC COMICS -Show')
 @section('main-content')
+   
     {{-- barra blu sotto jumbotron con immagine fumetto all'interno --}}
     <div class="blu-bar">
         <img src="{{ $prodotto_singolo['image']}}" alt="Comic Image" class="cards-img-top">
       </div>
       {{-- card con titolo e descrizione --}}
       <div class="card-comic">
+        @if (session('success'))  
+        <div class=" w-50 m-auto alert alert-success">
+            {{session('success')}}
+        </div>
+        @endif
           <div class="cards-body">
             <h5 class="cards-title">{{ $prodotto_singolo['title'] }}</h5>
             {{-- barra verde con prezzo --}}

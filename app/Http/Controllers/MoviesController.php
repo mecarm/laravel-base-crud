@@ -74,7 +74,9 @@ class MoviesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $comic = Movie::findOrFail($id);
+
+        return view('pages.movie.edit', compact('comic'));
     }
 
     /**
@@ -86,7 +88,11 @@ class MoviesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        $comic = Movie::findOrFail($id);
+        $comic->update($data);
+
+        return redirect()->route('movies.show', $comic->id)->with('success', "Hai Modificato con successo il fumetto: $comic->title ");
     }
 
     /**
