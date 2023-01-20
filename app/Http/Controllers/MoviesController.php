@@ -97,6 +97,9 @@ class MoviesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $movie = Movie::findOrFail($id);
+        $movie->delete();
+
+        return redirect()->route('movies.index')->with('success', "Hai cancellato con successo il fumetto: $movie->title ");
     }
 }

@@ -1,11 +1,28 @@
 @extends('layout.app')
 @section('page-title', 'DC COMICS -Comics')
+@section('font-awesome')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+@endsection
 @section('main-content')
 <div class="black">
+    @if (session('success'))
+        <div class=" w-50 m-auto alert alert-success">
+            {{session('success')}}
+        </div>
+    @endif
     <div class="cards">
         @foreach ($movies as $elem)
             <div class="fumetto">
                 <img src="{{$elem['image']}}" alt="fumetto">
+                <div id="hover-me">
+                    <form action="{{route('movies.destroy', $elem->id)}}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </form>
+                </div>
                 <h5><a href="{{ route('movies.show', $elem->id) }}">{{$elem['title']}}</a></h5>
             </div>
         @endforeach
@@ -38,6 +55,22 @@ a{
     width: 100%;
     object-fit: cover;
     object-position: top;
+}
+
+#hover-me{
+    display: none;
+}
+
+.fumetto:hover #hover-me{
+    position: relative;
+    bottom: 100px;
+    left: 40%;
+    display: inline-block;
+    color: white;
+} 
+
+.fumetto:hover img{
+    opacity: 0.1;
 }
 
 .fumetto h5 a {
